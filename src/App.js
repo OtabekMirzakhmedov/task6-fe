@@ -1,11 +1,15 @@
 
+import StartPage from './StartPage';
 
 function App() {
   return (
     <div>
-      <h1>MailGram</h1>
+      <StartPage/>
     </div>
   );
 }
+
+
+
 
 export default App;
