@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { useFormik } from 'formik';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faEnvelope} from '@fortawesome/free-solid-svg-icons'
+
 
 const StartPage = ({setUserName}) => {
     const [inputUserName, setInputUserName] = useState('');
@@ -16,9 +17,15 @@ const StartPage = ({setUserName}) => {
   };
 
   return (
-    <div>
+    <div className='flex-row justify-center h-screen items-center mx-auto mt-20'>
       <div className='flex justify-center'>
-        <p className='font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>MailClone</p>
+      <FontAwesomeIcon className="text-blue-500 text-4xl mb-3"   icon={faEnvelope} />
+      </div>
+      <div className='flex justify-center'>
+        <p className='text-blue-500 text-6xl'>MailClone</p>
+      </div>
+      <div className='flex justify-center'>
+        <p className='text-blue-500 text-2xl'>Enter you username and start mailing</p>
       </div>
     <div className="flex justify-center">
       <form onSubmit={handleSubmit} className="absolute m-3 w-1/3 focus:ring-2 focus:ring-red-500 shadow-xl border border-gray-200 rounded-lg">

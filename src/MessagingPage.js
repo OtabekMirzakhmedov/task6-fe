@@ -9,7 +9,7 @@ const MessagingPage = ({userName, setUserName}) => {
       };
   return (
     <div>
-      <div className="container mx-auto flex justify-center bg-white">
+      <div className="container mx-auto flex justify-center">
         <form className="relative m-3 focus:ring-2 focus:ring-red-500 shadow-xl border border-gray-200 rounded-lg">
           <div className="flex items-center">
             <div className="flex items-center">

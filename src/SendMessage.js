@@ -1,56 +1,64 @@
-import React from 'react';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useForm } from "react-hook-form";
 
 const SendMessage = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log(errors);
+    reset();
+  };
+  const handleReset = () => {
+    reset();
   };
 
   return (
-    <div className="max-w-md mx-auto border w-1/2 p-3">
-      <h2 className="text-2xl font-bold mb-4">Send Message</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-md mx-auto border w-1/2 shadow-sm bg-white p-3">
+      <div className="flex justify-between">
+        <h2 className="text font-bold mb-4 flex justify-start ">New Message</h2>
+        <button className="px-2 py-1 text" onClick={handleReset}>
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
         <div>
-          <label htmlFor="receiver" className="block text-gray-700">
-            Receiver:
-          </label>
           <input
             type="text"
-            id="receiver"
-            name="receiver"
-            required
-            className="w-full h-10 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Receiver"
+            {...register("receiver", { required: true })}
+            className="w-full h-12 outline-none border-b-2 mb-2"
           />
         </div>
         <div>
-          <label htmlFor="title" className="block text-gray-700">
-            Title:
-          </label>
           <input
             type="text"
-            id="title"
-            name="title"
-            required
-            className="w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 h-10"
+            placeholder="Subject"
+            {...register("subject", { required: true })}
+            className="w-full outline-none border-b-2 h-12 mb-2"
           />
         </div>
         <div>
-          <label htmlFor="message" className="block text-gray-700 h-10">
-            Message:
-          </label>
           <textarea
             id="message"
             name="message"
-            required
-            className="w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Message"
+            {...register("message", { required: true })}
+            className="w-full outline-none h-32"
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-        >
+        <div className="flex justify-end">
+        <button type="submit" className ="text-xl bg-blue-800 p-1 px-2 text-white rounded-2xl">
           Send
         </button>
+        </div>
       </form>
     </div>
   );
