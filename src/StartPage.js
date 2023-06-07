@@ -4,12 +4,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowRight, faEnvelope} from '@fortawesome/free-solid-svg-icons'
 
 
-const StartPage = ({setUserName}) => {
+const StartPage = ({startMailing}) => {
     const [inputUserName, setInputUserName] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUserName(inputUserName);
+    startMailing(inputUserName);
   };
 
   const handleChange = (event) => {

@@ -1,9 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 
-const SendMessage = () => {
+const SendMessage = ({ userName, sendMessage }) => {
   const {
     register,
     handleSubmit,
@@ -14,6 +14,7 @@ const SendMessage = () => {
   const onSubmit = (data) => {
     console.log(data);
     console.log(errors);
+    sendMessage(userName, data.receiver, data.subject, data.message);
     reset();
   };
   const handleReset = () => {
@@ -21,7 +22,7 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto border w-1/2 shadow-sm bg-white p-3">
+    <div className="max-w-xl mx-auto border w-1/2 shadow-sm bg-white p-3">
       <div className="flex justify-between">
         <h2 className="text font-bold mb-4 flex justify-start ">New Message</h2>
         <button className="px-2 py-1 text" onClick={handleReset}>
@@ -55,9 +56,12 @@ const SendMessage = () => {
           />
         </div>
         <div className="flex justify-end">
-        <button type="submit" className ="text-xl bg-blue-800 p-1 px-2 text-white rounded-2xl">
-          Send
-        </button>
+          <button
+            type="submit"
+            className="text-xl bg-blue-800 p-1 px-2 text-white rounded-2xl"
+          >
+            Send
+          </button>
         </div>
       </form>
     </div>
